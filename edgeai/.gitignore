@@ -1,0 +1,24 @@
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Environment and Config
+.env
+
+# YOLO Model Weights (Commonly heavy)
+*.pt
+*.onnx
+
+# Temporary Incident Data
+tmp_incident_*.jpg
+output_*.mp4
+
+# OS and Log
+.DS_Store
+*.log

@@ -1,0 +1,9 @@
+ultralytics
+opencv-python
+torch
+requests
+python-dotenv
+pillow
+numpy
+flask
+pytz

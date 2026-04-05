@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Camera {
+  id           String     @id @default(uuid())
+  name         String
+  locationName String
+  roadName     String?
+  latitude     Float
+  longitude    Float
+  streamUrl    String?
+  status       String     @default("active")
+  createdAt    DateTime   @default(now())
+}
+
+model Incident {
+  id                      String   @id @default(uuid())
+  eventId                 String   @unique
+  cameraId                String
+  cameraName              String
+  locationName            String
+  roadName                String?
+  latitude                Float
+  longitude               Float
+  imageUrl                String?
+  accidentDetected                Boolean
+  accidentConfidence              Float
+  
+  // Legacy / Default stats
+  humanCount                      Int      @default(0)
+  vehicleCount                    Int      @default(0)
+  
+  // Advanced Analytics: Actuals
+  visibleHumanCount               Int      @default(0)
+  incidentZoneHumanCount          Int      @default(0)
+  totalVehicleCount               Int      @default(0)
+  vehicleCountsByType             Json?
+  involvedVehicleCount            Int      @default(0)
+  involvedVehicleCountsByType     Json?
+  
+  // Advanced Analytics: Estimates
+  estimatedTotalOccupantsMin      Int      @default(0)
+  estimatedTotalOccupantsMax      Int      @default(0)
+  estimatedTotalOccupantsMidpoint Int      @default(0)
+  estimatedTotalAffectedMin       Int      @default(0)
+  estimatedTotalAffectedMax       Int      @default(0)
+  estimatedTotalAffectedMidpoint  Int      @default(0)
+
+  // System Flags
+  incidentScore                   Float    @default(0.0)
+  confirmationRuleTriggered       String?
+  severity                        String
+  severityScore                   Float
+  emergencyAlert                  Boolean  @default(false)
+  status                          String   @default("active") // active, resolved
+  createdAt                       DateTime @default(now())
+}

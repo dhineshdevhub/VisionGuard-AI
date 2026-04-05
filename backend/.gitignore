@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build Out
+dist/
+
+# Env and DB
+.env
+prisma/migrations/
+
+# Dynamic Content (Evidence Images)
+uploads/*.jpg
+uploads/*.png
+uploads/*.jpeg
+!uploads/.gitkeep
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
