@@ -2,16 +2,16 @@
 
 @layer base {
   :root {
-    --app-bg: #040508;
-    --app-card: #0d1117;
-    --app-accent: #00f2ff;
-    --app-emergency: #ff2d4a;
-    --app-border: #1d212b;
+    --app-bg: #f8fafc;
+    --app-card: #ffffff;
+    --app-accent: #0891b2;
+    --app-emergency: #dc2626;
+    --app-border: #e2e8f0;
   }
 
   body {
     background-color: var(--app-bg);
-    color: #cbd5e1; /* slate-300 */
+    color: #334155; /* slate-700 */
     overflow-x: hidden;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -19,33 +19,45 @@
   }
 
   h1, h2, h3, h4, h5 {
-    color: #f8fafc; /* slate-50 */
+    color: #0f172a; /* slate-900 */
     font-weight: 700;
   }
 }
 
+@utility shadow-premium {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+@utility shadow-glow {
+  box-shadow: 0 0 15px rgba(8, 145, 178, 0.1);
+}
+
+@utility shadow-glow-red {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.15);
+}
+
 /* Panel Layout System */
 .panel-container {
-  @apply rounded-2xl border border-white/5 bg-[#0a0c10] shadow-[0_4px_24px_rgba(0,0,0,0.4)];
+  @apply rounded-2xl border border-slate-200 bg-white shadow-premium;
 }
 
 .glass-morphism {
-  @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  @apply bg-white/70 backdrop-blur-xl border border-white;
 }
 
 .premium-card {
-  @apply bg-[#0f1218] border border-white/10 rounded-xl transition-all duration-300;
+  @apply bg-white border border-slate-200 rounded-xl shadow-sm transition-all duration-300;
 }
 
 .map-container .leaflet-container {
-  @apply w-full rounded-2xl !bg-[#0d0f14];
+  @apply w-full rounded-2xl !bg-[#f0f2f5];
 }
 
 /* Severity animations */
 @keyframes pulse-red-glow {
-  0% { box-shadow: 0 0 0px rgba(255, 45, 74, 0); }
-  50% { box-shadow: 0 0 30px rgba(255, 45, 74, 0.4); }
-  100% { box-shadow: 0 0 0px rgba(255, 45, 74, 0); }
+  0% { box-shadow: 0 0 0px rgba(220, 38, 38, 0); }
+  50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
+  100% { box-shadow: 0 0 0px rgba(220, 38, 38, 0); }
 }
 
 .pulse-emergency {
@@ -62,10 +74,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b; /* slate-800 */
+  background: #cbd5e1; /* slate-300 */
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155; /* slate-700 */
+  background: #94a3b8; /* slate-400 */
 }

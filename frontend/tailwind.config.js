@@ -8,30 +8,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#040508',
-        surface: '#0d0f14',
-        card: '#13161c',
-        muted: '#1b2028',
-        border: '#2a2f3a',
+        background: '#f8fafc',
+        surface: '#ffffff',
+        card: '#ffffff',
+        muted: '#f1f5f9',
+        border: '#e2e8f0',
         accent: {
-          DEFAULT: '#00f2ff', // Neon cyan
-          muted: '#00c8ff',
-          deep: '#005f73',
-          glow: 'rgba(0, 242, 255, 0.15)',
+          DEFAULT: '#0891b2', // cyan-600
+          light: '#ecfeff',
+          deep: '#155e75',
+          glow: 'rgba(8, 145, 178, 0.1)',
         },
         primary: {
-          DEFAULT: '#3062ff',
-          dark: '#1a3eb3',
+          DEFAULT: '#2563eb',
+          dark: '#1e40af',
         },
         emergency: {
-          DEFAULT: '#ff2d4a',
+          DEFAULT: '#dc2626',
           muted: '#ef4444',
           dark: '#991b1b',
         }
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(0, 242, 255, 0.15)',
-        'glow-red': '0 0 30px rgba(255, 45, 74, 0.2)',
+        'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+        'glow': '0 0 15px rgba(8, 145, 178, 0.1)',
+        'glow-red': '0 0 20px rgba(220, 38, 38, 0.15)',
       },
       borderWidth: {
         '1': '1px',

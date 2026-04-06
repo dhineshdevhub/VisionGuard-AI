@@ -99,27 +99,27 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-slate-300 font-sans p-4 md:p-6 lg:p-8 flex flex-col gap-6 selection:bg-accent/30">
+    <div className="min-h-screen bg-background text-slate-700 font-sans p-4 md:p-6 lg:p-8 flex flex-col gap-6 selection:bg-accent/30">
       {/* Header Container */}
-      <header className="flex flex-col xl:flex-row items-center justify-between gap-6 pb-6 border-b border-white/[0.04]">
+      <header className="flex flex-col xl:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-200">
         {/* Branding & Status HUD */}
         <div className="flex flex-wrap items-center justify-center xl:justify-start gap-4">
           <div className="relative">
-             <div className="p-3 bg-accent/10 rounded-2xl border border-accent/20 shadow-glow">
+             <div className="p-3 bg-accent/5 rounded-2xl border border-accent/10 shadow-sm">
                 <ShieldAlert className="text-accent" size={32} />
              </div>
-             <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border-2 border-background animate-pulse" />
+             <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border-2 border-white animate-pulse" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-               <h1 className="text-2xl font-black text-white tracking-tighter uppercase italic py-1 leading-none">VisionGuard <span className="text-accent not-italic">AI</span></h1>
-               <span className="text-[10px] font-black bg-white/5 border border-white/10 px-2 py-0.5 rounded text-slate-500 tracking-widest uppercase">Global_OS v2.4</span>
+               <h1 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic py-1 leading-none">VisionGuard <span className="text-accent not-italic">AI</span></h1>
+               <span className="text-[10px] font-black bg-slate-100 border border-slate-200 px-2 py-0.5 rounded text-slate-500 tracking-widest uppercase">Global_OS v2.4</span>
             </div>
             <div className="flex items-center space-x-3 text-slate-500 mt-1">
                <span className="text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5">
                   <Zap size={10} className="text-accent" /> Monitoring active
                </span>
-               <div className="w-1 h-1 rounded-full bg-slate-800" />
+               <div className="w-1 h-1 rounded-full bg-slate-300" />
                <span className="text-[10px] font-medium tracking-tight">Active Nodes: {incidents.length}</span>
             </div>
           </div>
@@ -127,14 +127,14 @@ const Dashboard: React.FC = () => {
 
         {/* Tactical Controls HUD */}
         <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 w-full xl:w-auto">
-            <div className="flex items-center gap-3 bg-surface p-1.5 px-4 rounded-xl border border-white/5 shadow-inner">
-               <div className="flex items-center gap-2.5 pr-4 border-r border-white/5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+            <div className="flex items-center gap-3 bg-white p-1.5 px-4 rounded-xl border border-slate-200 shadow-sm">
+               <div className="flex items-center gap-2.5 pr-4 border-r border-slate-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-sm" />
                   <span className="text-[10px] font-black uppercase tracking-widest font-mono text-slate-400">Stable</span>
                </div>
                <button 
                   onClick={() => setSoundEnabled(!soundEnabled)}
-                  className={`p-2 transition-all rounded-lg transition-transform active:scale-95 ${soundEnabled ? 'text-accent bg-accent/10 shadow-glow/10' : 'text-slate-600 hover:text-slate-400 hover:bg-white/5'}`}
+                  className={`p-2 transition-all rounded-lg ${soundEnabled ? 'text-accent bg-accent/5' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
                   title={soundEnabled ? "Siren Enabled" : "Siren Disabled"}
                >
                   {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
@@ -185,7 +185,7 @@ const Dashboard: React.FC = () => {
         {/* Left: Feed Panel */}
         <section className="lg:col-span-4 xl:col-span-3 flex flex-col gap-4 overflow-hidden min-h-[500px]">
            <div className="flex items-center justify-between px-1">
-              <h2 className="text-xs font-black uppercase tracking-[0.2em] text-white flex items-center space-x-2">
+              <h2 className="text-xs font-black uppercase tracking-[0.2em] text-slate-800 flex items-center space-x-2">
                  <BellRing className="text-emergency" size={14} />
                  <span>Incident Feed</span>
               </h2>
@@ -262,24 +262,24 @@ const Dashboard: React.FC = () => {
       {/* Emergency Global Alert Overlay */}
       <AnimatePresence>
         {showAlarm && (
-          <motion.div 
+           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-emergency/10 backdrop-blur-md pointer-events-none"
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-red-500/10 backdrop-blur-md pointer-events-none"
           >
              <motion.div 
                 initial={{ scale: 0.8, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 className="bg-emergency p-1.5 rounded-[2.5rem] shadow-glow-red"
              >
-                <div className="bg-background/90 backdrop-blur-xl border-4 border-emergency p-12 rounded-[2.25rem] flex flex-col items-center space-y-6">
+                <div className="bg-white/95 backdrop-blur-xl border-4 border-emergency p-12 rounded-[2.25rem] flex flex-col items-center space-y-6">
                    <div className="relative">
                       <AlertCircle className="text-emergency animate-pulse" size={100} />
-                      <div className="absolute inset-0 bg-emergency/20 blur-2xl animate-pulse rounded-full" />
+                      <div className="absolute inset-0 bg-emergency/10 blur-2xl animate-pulse rounded-full" />
                    </div>
                    <div className="text-center space-y-3">
-                      <h2 className="text-5xl font-black italic tracking-tighter text-white uppercase leading-none">Critical Incident</h2>
+                      <h2 className="text-5xl font-black italic tracking-tighter text-slate-900 uppercase leading-none">Critical Incident</h2>
                       <p className="text-emergency font-bold text-lg tracking-widest uppercase opacity-80">Immediate Personnel Deployment Required</p>
                    </div>
                 </div>
