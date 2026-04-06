@@ -12,8 +12,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (uploads)
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+// Serve static files (uploads) with CORS headers to prevent ORB blocking
+app.use('/uploads', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+}, express.static(path.join(__dirname, '../uploads')));
 
 // Routes
 app.use('/api/incidents', incidentRoutes);
