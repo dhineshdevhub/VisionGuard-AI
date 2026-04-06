@@ -15,6 +15,11 @@ export const incidentService = {
 
 export const getImageUrl = (path: string | null) => {
   if (!path) return null;
+  // Cloudinary URLs are absolute — return them directly
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path;
+  }
+  // Local dev — prepend backend base URL
   const baseUrl = API_BASE.replace('/api', '');
   return `${baseUrl}${path}`;
 };

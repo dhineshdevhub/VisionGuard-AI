@@ -21,7 +21,13 @@ export const createIncident = async (req: Request, res: Response) => {
       roadName: data.roadName || null,
       latitude: parseFloat(data.latitude),
       longitude: parseFloat(data.longitude),
-      imageUrl: req.file ? `/uploads/${req.file.filename}` : null,
+      // Cloudinary returns a full https:// URL in req.file.path
+      // Local disk storage returns a filesystem path, so we build the /uploads/ URL manually
+      imageUrl: req.file
+        ? (req.file.path && req.file.path.startsWith('http')
+            ? req.file.path          // Cloudinary secure_url
+            : `/uploads/${req.file.filename}`) // local disk
+        : null,
       
       accidentDetected: data.accidentDetected === 'true' || data.accidentDetected === true,
       accidentConfidence: parseFloat(data.accidentConfidence),
